@@ -8,27 +8,25 @@ Animated SVG variants of the Orqa Studio logo for use in loading states, splash 
 
 ![logo-pulse](logo-pulse.svg)
 
-A looping sonar pulse animation. The three concentric rings illuminate sequentially from inner to outer, creating a ripple-out effect. The fin remains static as an anchor point.
+A looping sonar pulse animation. Each ring draws itself along its elliptical path as it appears, then all three hold together before fading out. The fin remains static as an anchor point.
 
 | Property | Value |
 |---|---|
 | Cycle duration | 3s |
 | Easing | ease-in-out |
 | Loop | infinite |
-| Technique | CSS `@keyframes` (no JS required) |
+| Technique | CSS `@keyframes` + SVG masks (no JS required) |
 
 ### Timing
 
-The animation has three phases:
-
 | Phase | Frames | What happens |
 |---|---|---|
-| Ripple in | 0–45% | Rings appear sequentially — inner, then middle, then outer |
-| Hold | 45–65% | All three rings stay fully visible together |
+| Ripple in | 0–45% | Rings stroke-draw sequentially — inner, middle, then outer. Each ring traces its elliptical path as it fades in. |
+| Hold | 45–65% | All three rings fully visible together |
 | Fade out | 65–80% | All rings fade out simultaneously |
 | Pause | 80–100% | All rings invisible before the next cycle |
 
-Each ring goes fully to `opacity: 0` between pulses — no partial-opacity frames.
+Each ring uses a masked `stroke-dashoffset` animation to create the draw effect, synced with its opacity fade-in. Rings go fully to `opacity: 0` between pulses.
 
 ### Usage
 
@@ -68,14 +66,15 @@ function LoadingSpinner({ size = 64 }: { size?: number }) {
 
 If you need to override timing or colours, embed the SVG directly in your markup. The animation classes are:
 
-- `.ring-inner` — first pulse
-- `.ring-middle` — second pulse
-- `.ring-outer` — third pulse
+- `.ring-inner` / `.draw-inner` — first ring (opacity + stroke draw)
+- `.ring-middle` / `.draw-middle` — second ring
+- `.ring-outer` / `.draw-outer` — third ring
 
-You can override the animation duration or delay with your own CSS:
+To change the speed, override all animation durations together:
 
 ```css
-.ring-inner, .ring-middle, .ring-outer {
+.ring-inner, .ring-middle, .ring-outer,
+.draw-inner, .draw-middle, .draw-outer {
   animation-duration: 4s; /* slower pulse */
 }
 ```
