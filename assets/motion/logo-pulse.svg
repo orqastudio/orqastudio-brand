@@ -2,71 +2,71 @@
 <style>
   /* Opacity: rings appear sequentially, hold, then all fade out */
   .ring-inner {
-    animation: inner 3s ease-in-out infinite;
+    animation: inner 4s ease-in-out infinite;
   }
   .ring-middle {
-    animation: middle 3s ease-in-out infinite;
+    animation: middle 4s ease-in-out infinite;
   }
   .ring-outer {
-    animation: outer 3s ease-in-out infinite;
+    animation: outer 4s ease-in-out infinite;
   }
 
   @keyframes inner {
     0%   { opacity: 0; }
     20%  { opacity: 1; }
-    65%  { opacity: 1; }
-    72%  { opacity: 0; }
+    78%  { opacity: 1; }
+    85%  { opacity: 0; }
     100% { opacity: 0; }
   }
   @keyframes middle {
     0%   { opacity: 0; }
     18%  { opacity: 0; }
     38%  { opacity: 1; }
-    65%  { opacity: 1; }
-    72%  { opacity: 0; }
+    78%  { opacity: 1; }
+    85%  { opacity: 0; }
     100% { opacity: 0; }
   }
   @keyframes outer {
     0%   { opacity: 0; }
     35%  { opacity: 0; }
     55%  { opacity: 1; }
-    65%  { opacity: 1; }
-    72%  { opacity: 0; }
+    78%  { opacity: 1; }
+    85%  { opacity: 0; }
     100% { opacity: 0; }
   }
 
   /* Stroke draw: mask ellipses trace the ring path during fade-in */
   .draw-inner {
-    animation: draw-inner 3s ease-in-out infinite;
+    animation: draw-inner 4s ease-in-out infinite;
   }
   .draw-middle {
-    animation: draw-middle 3s ease-in-out infinite;
+    animation: draw-middle 4s ease-in-out infinite;
   }
   .draw-outer {
-    animation: draw-outer 3s ease-in-out infinite;
+    animation: draw-outer 4s ease-in-out infinite;
   }
 
   @keyframes draw-inner {
     0%   { stroke-dashoffset: 1; }
     20%  { stroke-dashoffset: 0; }
-    71%  { stroke-dashoffset: 0; }
-    72%  { stroke-dashoffset: 1; }
+    84%  { stroke-dashoffset: 0; }
+    85%  { stroke-dashoffset: 1; }
     100% { stroke-dashoffset: 1; }
   }
   @keyframes draw-middle {
     0%   { stroke-dashoffset: 1; }
     18%  { stroke-dashoffset: 1; }
     38%  { stroke-dashoffset: 0; }
-    71%  { stroke-dashoffset: 0; }
-    72%  { stroke-dashoffset: 1; }
+    84%  { stroke-dashoffset: 0; }
+    85%  { stroke-dashoffset: 1; }
     100% { stroke-dashoffset: 1; }
   }
   @keyframes draw-outer {
     0%   { stroke-dashoffset: 1; }
     35%  { stroke-dashoffset: 1; }
     55%  { stroke-dashoffset: 0; }
-    71%  { stroke-dashoffset: 0; }
-    72%  { stroke-dashoffset: 1; }
+    84%  { stroke-dashoffset: 0; }
+    85%  { stroke-dashoffset: 1; }
     100% { stroke-dashoffset: 1; }
   }
 </style>
@@ -74,17 +74,20 @@
 <defs>
   <!-- Mask ellipses trace the center of each ring -->
   <mask id="mask-inner">
-    <ellipse class="draw-inner" cx="512" cy="700" rx="290" ry="78"
+    <path class="draw-inner"
+      d="M512,622 A290,78 0 1,1 511.99,622 Z"
       fill="none" stroke="white" stroke-width="200"
       pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
   </mask>
   <mask id="mask-middle">
-    <ellipse class="draw-middle" cx="512" cy="700" rx="398" ry="108"
+    <path class="draw-middle"
+      d="M512,592 A398,108 0 1,1 511.99,592 Z"
       fill="none" stroke="white" stroke-width="260"
       pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
   </mask>
   <mask id="mask-outer">
-    <ellipse class="draw-outer" cx="512" cy="710" rx="503" ry="140"
+    <path class="draw-outer"
+      d="M512,570 A503,140 0 1,1 511.99,570 Z"
       fill="none" stroke="white" stroke-width="300"
       pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
   </mask>
@@ -104,10 +107,16 @@
   <linearGradient id="paint3_linear_37_59" x1="747.674" y1="181.361" x2="300.452" y2="714.059" gradientUnits="userSpaceOnUse">
     <stop stop-color="white"/>
     <stop offset="1" stop-color="#45D6E9"/>
+    <animate attributeName="x1" values="747.674;947.674;747.674" dur="2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+    <animate attributeName="y1" values="181.361;-18.639;181.361" dur="2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+    <animate attributeName="x2" values="300.452;100.452;300.452" dur="2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
   </linearGradient>
   <linearGradient id="paint4_linear_37_59" x1="747.737" y1="181.361" x2="300.526" y2="714.121" gradientUnits="userSpaceOnUse">
     <stop stop-color="#45D6E9"/>
     <stop offset="1" stop-color="#2D92C9"/>
+    <animate attributeName="x1" values="747.737;947.737;747.737" dur="2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+    <animate attributeName="y1" values="181.361;-18.639;181.361" dur="2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+    <animate attributeName="x2" values="300.526;100.526;300.526" dur="2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
   </linearGradient>
 </defs>
 
