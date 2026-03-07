@@ -1,3 +1,5 @@
+![License](https://img.shields.io/badge/license-CC--BY--ND--4.0-lightgrey)
+
 ![OrqaStudio](assets/banners/banner-1680x240.png)
 
 # OrqaStudio — Brand Assets
